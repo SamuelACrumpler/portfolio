@@ -1,0 +1,87 @@
+@font-face {
+    font-family: B612R;
+    src: url(../css/fonts/B612-Regular.ttf);
+  }
+
+  @font-face {
+    font-family: B612B;
+    src: url(../css/fonts/B612-Bold.ttf);
+  }
+
+  @font-face {
+    font-family: Roboto;
+    src: url(../css/fonts/Roboto-Regular.ttf);
+  }
+
+body{
+    font-family: Roboto !important;
+    background-image: url(../css/img/connectwork.png);
+}
+
+h1,h2,h3,h4,h5,h6, .htextcol {
+    font-family: B612B;
+    color: #753b41 !important;
+}
+
+.B612R{
+    font-family: B612R;
+}
+
+.navcolor{
+    background-color: rgba(0,0,0,0.75);
+
+
+}
+
+.transcolor{
+    background-color: rgba(192,192,192,0.5);
+}
+
+.offcolor{
+    background-color: rgba(255,235,235, 0.5);
+
+}
+
+.headercolor{
+    background-color: rgba(192,192,192,0.5);
+
+
+       /* background-color:rgba(100,100,100,0.5); */
+       color: lightgray
+
+
+}
+
+.contentcolor{
+   /* background-color:rgba(192,192,192,0.3); */
+   background-color:rgba(255,255,255,0.8);
+}
+
+.cards{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+}
+
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+.maincolor{
+
+    background-color: #d42b3c;
+}
+
+.btn-learnmore{
+
+    background-color: #d42b3c !important;
+}
