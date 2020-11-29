@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './nav';
-import img400 from '../imgs/400.png';
 import wall from '../imgs/wall.png';
+import Footer from './footer';
 class home extends Component {
     constructor(props) {
 		super(props);
@@ -13,20 +13,22 @@ class home extends Component {
 	
     }
     
+    //fix up the margin setup
+
     render() {
 		return (
 			<div className="">
                 <Navbar/>
                 <div className="container p-2 rounded">
-                    <div className="row mb-3">
+                    <div className="row mb-3  m-0">
                         <div className="col-lg offcolor p-1 rounded">
                             <h5 className="contentcolor rounded p-3 m-1">Hi. I'm Samuel, and I'm a full stack developer</h5>
                         </div>
                     </div>
-                    <div className="row mb-3 ">
-                        <div className="col-lg offcolor rounded"> 
+                    <div className="row mb-3 m-0">
+                        <div className="col-lg p-2 offcolor rounded"> 
                             <div className="row mt-2 mb-2">
-                                <div className="col-lg-4">
+                                <div className="col-lg-4 pr-lg-0 mb-sm-2 mb-2">
                                 <h4 className="headercolor text-center rounded">IsleyScheduler</h4>
 
                                     <div className="contentcolor rounded p-3 m-0 text-center">
@@ -35,13 +37,13 @@ class home extends Component {
                                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                     </div>
                                 </div>
-                                <div className="col-lg-8 h-100">
+                                <div className="col-lg-8">
                                     <img className="img-fluid rounded" src={wall} alt="Logo"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row m-0">
                         <div className="col-lg-4 offcolor p-0 rounded">
                             
                             <h4 className="headercolor text-center rounded p-1">Experience</h4>
@@ -59,7 +61,7 @@ class home extends Component {
                             </div>
                         </div>
 
-                        <div className="col-lg-3 ml-auto offcolor p-0 rounded">
+                        <div className="col-lg-3 ml-auto mt-sm-2 mt-2 mt-md-0 offcolor p-0 rounded ">
                         <h4 className="headercolor text-center rounded p-1">Testimonials</h4>
 
                             <div className="row m-2 p-3 contentcolor rounded text-center">
@@ -72,13 +74,14 @@ class home extends Component {
                             </div>
                             
                         </div>
-                        <div className="col-lg-4 ml-auto offcolor rounded p-0">
+                        <div className="col-lg-4 ml-auto mt-sm-2 mt-2 mt-md-0 offcolor rounded p-0">
                         <h4 className="headercolor text-center rounded p-1">Social</h4>
 
                         </div>
                     </div>
-                </div>
+                <Footer/>
 
+                </div>
             </div>
 
 		);

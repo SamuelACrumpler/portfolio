@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
+import Footer from './footer';
 import Navbar from './nav';
 class about extends Component {
+    //Write a script for filling out all the skills
+    //About me needs to have some actual history
+
+
 
     render() {
 		return (
 			<div>
                 <Navbar/>
                
-                <div className="container p-2 offcolor rounded">
-                    <div className="row m-0">
+                <div className="container p-2 rounded">
+                    <div className="row m-0 offcolor p-2 rounded">
                         <div className="col-md-8 p-3 contentcolor rounded">
                             <h3>About Me</h3>
                             <p>
@@ -18,16 +23,24 @@ class about extends Component {
                             
 
                         </div>
-                        <div className="col-md-4 pr-0 rounded">
-                            
-                            <div className="contentcolor ml-1 p-2 rounded">
-                            <h3>Education</h3>
+                        <div className="col-md-4 pr-md-0 p-0 pl-md-2 rounded">
+                            <div className="contentcolor ml-md-1 mt-sm-2 mt-2 mt-md-0 p-2 rounded">
+                            <h3>Skills</h3>
+                                <div className="row p-0">
+                                    <div className="col-6">HTML5</div>
+                                    <div className="col-6">JavaScript</div>
+                                </div>
+                                
+
+                            </div>    
+                            <div className="contentcolor ml-md-1 mt-2 p-2 rounded">
+                                <h3>Education</h3>
                                 <h6>Western Governors University</h6>
                                 <p>
                                 Bachelor's Degree in Software Development
                                 </p>
                             </div>
-                            <div className="contentcolor ml-1 mt-2 p-2 rounded">
+                            <div className="contentcolor ml-md-1 mt-2 p-2 rounded">
                                 <h3>Certifications</h3>
                                 <h6>CompTIA Project+</h6>
                                 <p>Project Management Certification</p>
@@ -38,9 +51,10 @@ class about extends Component {
                             </div>
                         </div>
                     </div>
+                <Footer/>
+
                 </div>
                 
-
             </div>
 
 		);
