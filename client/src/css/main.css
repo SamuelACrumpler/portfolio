@@ -15,35 +15,40 @@
 
 body{
     font-family: Roboto !important;
-    background-image: url(../css/img/connectwork.png);
+    background-image: url(../css/img/gplaypattern.png);
 }
 
 h1,h2,h3,h4,h5,h6, .htextcol {
     font-family: B612B;
-    color: #753b41 !important;
+    /* color: #753b41 !important; */
+    color: #3b4f75 !important;
 }
 
 .B612R{
     font-family: B612R;
 }
 
-.navcolor{
-    background-color: rgba(0,0,0,0.75);
-
-
+.indent{
+    text-indent: 25px;
+    line-height: 1.75;
 }
 
-.transcolor{
-    background-color: rgba(192,192,192,0.5);
+.navcolor,  .nav-link{
+    background-color: rgba(57, 101, 184, 0.5); 
+}
+
+.transcolor, .headercolor{
+    /* background-color: rgba(192,192,192,0.5); */
+    background-color: rgba(192, 192, 192, 0.5)!important; 
 }
 
 .offcolor{
-    background-color: rgba(255,235,235, 0.5);
-
+    /* background-color: rgba(255,235,235, 0.5); */
+    background-color: rgba(57, 101, 184, 0.5); 
 }
 
 .headercolor{
-    background-color: rgba(192,192,192,0.5);
+    /* background-color: rgba(192,192,192,0.5); */
 
 
        /* background-color:rgba(100,100,100,0.5); */
@@ -54,7 +59,7 @@ h1,h2,h3,h4,h5,h6, .htextcol {
 
 .contentcolor{
    /* background-color:rgba(192,192,192,0.3); */
-   background-color:rgba(255,255,255,0.8);
+   background-color:rgb(255, 255, 255,0.9);
 }
 
 .cards{
@@ -114,4 +119,8 @@ h1,h2,h3,h4,h5,h6, .htextcol {
 .btn-learnmore{
 
     background-color: #d42b3c !important;
+}
+
+a{
+    color:white!important;
 }

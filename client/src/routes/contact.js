@@ -18,11 +18,12 @@ class contact extends Component {
           message: "",
           status: "Submit",
           error: "",
-          recaptchaInstance: "",
+          response: "",
           path: result
         };   
 
-		this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.handleCaptchaResponseChange = this.handleCaptchaResponseChange.bind(this);
 
 
     } 
@@ -47,12 +48,11 @@ class contact extends Component {
       this.setState(state);
     }
 
-    handleCaptcha(key){
+    handleCaptchaResponseChange(res) {
+      console.log("Captcha value:", res)
       this.setState({
-        captcha: true,
-        'g-recaptcha-response': key
-      })
-
+        response: res,
+      });
     }
 
     handleSubmit(event) {
@@ -61,31 +61,30 @@ class contact extends Component {
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
+        const response = this.state.response;
         if(name === ""){
             this.setState({error: "Name was left blank."})
+						document.getElementById("error").classList.remove('d-none');
+
         }else if(email === ""){
           this.setState({error: "E-Mail was left blank"})
+						document.getElementById("error").classList.remove('d-none');
+
        }else if(message === ""){
-        this.setState({error: "E-Mail was left blank"})
+        this.setState({error: "Message was left blank"})
+						document.getElementById("error").classList.remove('d-none');
+      }else if(response === "" || response === null){
+        this.setState({error: "The reCAPTCHA was invalid. Go back and try it again."})
+						document.getElementById("error").classList.remove('d-none');
       }
 
-        axios({
-            method: "POST", 
-            url: this.state.path + "/send", 
-            data: {
-                name: name,   
-                email: email,  
-                messsage: message
-            }
-        }).then((response)=>{
-            if (response.data.msg === 'success'){
-                alert("Message Sent."); 
-                this.resetForm()
-            }else if(response.data.msg === 'fail'){
-                alert("Message failed to send.")
-            }
-        })
-       
+      axios.post(this.state.path + '/api/rcap',{'g-recaptcha-response' : response})
+			.then(res => {
+				console.log(res.data)
+			})
+        
+      
+   
     }
 
     
@@ -93,21 +92,17 @@ class contact extends Component {
       document.getElementById('contact-form').reset();
     }
 
-    //figure out a social media setup
-    //figure out a contact setup.
-    // https://www.michaelburrows.xyz/react-contact-form/
-
-
     render() {
 		return (
 			<div>
-                <Navbar/>
                 <div className="container p-2  rounded">
+                <Navbar/>
+
                     <div className="row m-0 p-2 rounded offcolor">
                         <div className="col-md-12 p-0 rounded">
                             <div className="contentcolor p-3 rounded">
                             <h3>Contact Me</h3>
-                            
+                            <hr/>
                             
                             <form id="contact-form" className="mb-2" onSubmit={this.handleSubmit.bind(this)} method="POST">
                                 <div className="form-group">
@@ -124,20 +119,20 @@ class contact extends Component {
                                 </div>
                                 <ReCAPTCHA 
                                   className="mb-2"
-                                  ref={e => this.state.recaptchaInstance = e}
+                                  ref={(el) => { this.recaptcha = el; }}
                                   sitekey="6Lc8sTYaAAAAAN7ttPS6jmXZ_J5ZUP_IY2YUB_VT" 
-                                  onChange={this.handleCaptcha} 
+                                  onChange={this.handleCaptchaResponseChange} 
                                   verifyCallback={this.verifyCallback}
                                   onloadCallback={this.callback}
                                 />
 
                                 <button  className="btn btn-primary">Submit</button>
                             </form>
-                              <div class="alert alert-danger" role="alert">
-                                This is a danger alert—check it out!
+                              <div class="alert alert-danger d-none" id="error" role="alert">
+                              {this.state.error}
                               </div>
-                              <div class="alert alert-success" role="alert">
-                                REMINDER! Set a clock for success to disappear, but not danger.
+                              <div class="alert alert-success d-none" id="success" role="alert">
+                                {this.state.error}
                               </div>
                             </div>
                             

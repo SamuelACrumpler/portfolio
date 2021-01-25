@@ -1,0 +1,58 @@
+[{
+    "title":"Isley Scheduler",
+    "tags":["React.JS","Express.JS","Node.JS","MongoDB","Bootstrap", "Responsive Design", "JavaScript"],
+    "desc":"A scheduling program made for gardening services. Allows the user to create other users with different permissions such as Admin, Worker and Dispatcher, create and manage customers, handle appointments, view different types of reports. The project also gives the user a calendar view, and marks what days has appointments on them.",
+    "summary":"A scheduling program made in the MERN stack for gardening services.",
+    "pic":"./wall.png",
+    "web":"https://isleyscheduler.samuelcrumpler.com",
+    "git":"https://github.com/SamuelACrumpler/wgucapstonedev",
+    "disabled":""
+},{
+    "title":"Op4 Gaming",
+    "tags":["WordPress","Bootstrap", "CSS", "Responsive Design", "JavaScript"],
+    "desc":"A website created for a customer made with WordPress, and styled using Bootstrap to make the website responsive. The website features a banner that will cycle through different pictures on refresh, a carousel that is updated via WordPress posts, and some social media integration on the sidebar.",
+    "summary":"A website created for a gaming group using Wordpress and Bootstrap.",
+    "pic":"./wall.png",
+    "web":"http://op4gaming.us/",
+    "git":"",
+    "disabled":"disabled"
+},{
+    "title":"Typing Game",
+    "tags":["React.JS","Express.JS","Node.JS","MongoDB","Bootstrap", "Responsive Design", "JavaScript"],
+    "desc":"A typing game created with the MERN stack. The player needs to type the word presenting to them, and earns points based on how long the word is, also the player has 60 seconds to score as much as they can. The score gets posted to a database using MongoDB. There are different boards based on the language selected by the player.",
+    "summary":"A typing game made using the MERN stack. Supports three languages total.",
+    "pic":"./wall.png",
+    "web":"https://typinggame.samuelcrumpler.com",
+    "git":"https://github.com/SamuelACrumpler/typing-game",
+    "disabled":""
+},{
+    "title":"Math Game",
+    "tags":["React.JS","Express.JS","Node.JS","MongoDB","Bootstrap", "Responsive Design", "JavaScript"],
+    "desc":"A math game created with the MERN stack. The player selects the operators they want to deal with, or select the multiplication table option, then a range of numbers to handle. If the player chooses the operators, they must solve as many problems as possible within 60 seconds, otherwise they must complete the multiplication table as fast as possible. The scores are stored via MongoDB, using the range and game type for the scoreboard.",
+    "summary":"Math game made in the MERN stack. Supports several different modes of play, and a range of numbers to deal with.",
+    "pic":"./wall.png",
+    "web":"https://mathgame.samuelcrumpler.com",
+    "git":"https://github.com/SamuelACrumpler/math-game",
+    "disabled":""
+},{
+    "title":"Portfolio",
+    "tags":["React.JS","Express.JS","Node.JS","MongoDB","Bootstrap", "Responsive Design", "JavaScript"],
+    "desc":"The code for the portfolio which was created using the MERN stack, and Bootstrap. The portfolio features implementation of a contact form using Axios, and Recaptchav2 to verify if the person filling out the form is actually human, as well as several Bootstrap modules, and a twitter feed on the front page.",
+    "summary":"The code for the portfolio which was created using the MERN stack, and Bootstrap.",
+    "pic":"./wall.png",
+    "web":"https://samuelcrumpler.com",
+    "git":"https://github.com/SamuelACrumpler/portfolio",
+    "disabled":""
+},{
+    "title":"Time Tracker",
+    "tags":["Google Sheets", "JavaScript"],
+    "desc":"A Google Sheets project. The project uses JavaScript to handle the process of calculating the percentage of time spent versus the goal time. The Time Tracker project was created as a simple way for the user to manage their time and re-evaluate how the user handles those tasks.",
+    "summary":"A simple time tracking program made with Google Sheets and JavaScript",
+    "pic":"./wall.png",
+    "web":"https://docs.google.com/spreadsheets/d/1_xfobO4gEK47_dVPsKFLoeMHIqVxe83uCPkq9H3jAhQ/edit#gid=0",
+    "git":"https://github.com/SamuelACrumpler/time-tracker",
+    "disabled":""
+}
+
+
+]

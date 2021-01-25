@@ -12,9 +12,9 @@ class Navbar extends Component {
     
     render() {
 		return (
-			<nav className="navbar navbar-expand-lg navbar-dark navcolor static-top">
-				<div className="container">
-					<a className="navbar-brand" href="/"><span className="htextcol">Samuel</span><span className="B612R"> Crumpler</span></a>
+			<nav className="navbar navbar-dark navbar-expand-lg navbar-l navcolor shadow p-0 static-top mb-2 rounded">
+				<div className="container p-0">
+					<a className="navbar-brand ml-3" href="/"><span className="htextcol">Samuel</span><span className="B612R"> Crumpler</span></a>
 					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
@@ -22,14 +22,12 @@ class Navbar extends Component {
 						<ul className="navbar-nav ml-auto">
 
 							{
-								this.state.list.map((list, index) => (
-							
+								this.state.list.map((list, index) => {
+									return <li className="nav-item" key={index}>
+										<a className="nav-link pt-3 pb-3 text-center" href={list.link}>{list.title}</a>
+									</li>
 
-										<li className="nav-item" key={index}>
-											<a className="nav-link" href={list.link}>{list.title}</a>
-									
-										</li>
-									)
+									}
 								)
 
 							}

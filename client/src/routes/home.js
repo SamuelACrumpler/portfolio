@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import Navbar from './nav';
 import wall from '../imgs/wall.png';
 import Footer from './footer';
+import data from "../files/projects"
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
 class home extends Component {
     constructor(props) {
 		super(props);
 
 		this.state = {
-			list : [{title: 'Home', link: '/'}, {title: 'About', link: '/about'},  {title: 'Projects', link: '/projects'}, {title: 'Contact', link: '/contact'},  ]
+            list : [{title: 'Home', link: '/'}, {title: 'About', link: '/about'},  {title: 'Projects', link: '/projects'}, {title: 'Contact', link: '/contact'},  ],
+            lstProject : data
 		}
-
+        
+        console.log(data)
 	
     }
     
@@ -17,71 +21,87 @@ class home extends Component {
 
     render() {
 		return (
-			<div className="">
+            <div className="container p-2 rounded">
                 <Navbar/>
-                <div className="container p-2 rounded">
-                    <div className="row mb-3  m-0">
-                        <div className="col-lg offcolor p-1 rounded">
+
+                <div className="row mb-3 offcolor  m-0 shadow rounded">
+                        <div className="col-lg p-1 rounded">
                             <h5 className="contentcolor rounded p-3 m-1">Hi. I'm Samuel, and I'm a full stack developer</h5>
                         </div>
-                    </div>
-                    <div className="row mb-3 m-0">
-                        <div className="col-lg p-2 offcolor rounded"> 
-                            <div className="row mt-2 mb-2">
-                                <div className="col-lg-4 pr-lg-0 mb-sm-2 mb-2">
-                                <h4 className="headercolor text-center rounded">IsleyScheduler</h4>
-
-                                    <div className="contentcolor rounded p-3 m-0 text-center">
-                                    <h6 className="">MERN Stack Project</h6>
-                                    PROJECT HIGHLIGHT   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </div>
-                                </div>
-                                <div className="col-lg-8">
-                                    <img className="img-fluid rounded" src={wall} alt="Logo"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div className="row m-0">
-                        <div className="col-lg-4 offcolor p-0 rounded">
+
+                        <div className="col-lg-9 pb-2   rounded"> 
                             
-                            <h4 className="headercolor text-center rounded p-1">Experience</h4>
-                            <div className=" contentcolor rounded m-2 p-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </div>
-                            <div className="m-2">
-                              <button type="button" className="btn btn-secondary btn-learnmore btn-block">
-                                <a>
-                                Learn More
- 
+                            <div id="carousel" class="carousel slide pt-0" data-ride="carousel">
+                                <ol className="carousel-indicators">
+                                    {
+                                        this.state.lstProject.map((project, index) =>{
+                                            if(index === 0){//for the first item
+                                                return <li data-target="#carousel" key={index} data-slide-to={index} className="active"></li>
+                                            }else{
+                                                return <li data-target="#carousel" data-slide-to={index}></li>
+                                            }
+                                        })
+                                    }
+                                </ol>
+                                <div className="carousel-inner">
+                                    {
+                                        this.state.lstProject.map((project, index) =>{
+                                            if(index === 0){//for the first item
+                                                return <div class="carousel-item active">
+                                                            <img class="d-block w-100 rounded" src={project.pic} alt=""/>
+                                                            <div class="carousel-caption d-none d-md-block text-center">
+                                                                <h5>{project.title}</h5>
+                                                                <p>Project Summary Here?</p>
+                                                                <button type="button" className="btn btn-primary mr-1">
+                                                                    <a href={project.web} target="_blank"  rel="noreferrer">View Project On Web</a>
+                                                                </button>
+                                                                <button type="button" className={project.disabled + " btn btn-primary ml-1"}>
+                                                                    <a href={project.git} target="_blank"  rel="noreferrer">View Project on GitHub</a>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                            }else{
+                                                return <div class="carousel-item">
+                                                            <img class="d-block w-100 rounded" src={project.pic} alt=""/>
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h5>{project.title}</h5>
+                                                                <p>Project Summary Here?</p>
+                                                                <button type="button" className="btn btn-primary mr-1">
+                                                                    <a href={project.web} target="_blank"  rel="noreferrer">View Project On Web</a>
+                                                                </button>
+                                                                <button type="button" className={project.disabled + " btn btn-primary ml-1"}>
+                                                                    <a href={project.git} target="_blank"  rel="noreferrer">View Project on GitHub</a>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                            }
+                                        })
+                                    }
+                                    
+                                </div>
+                                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
                                 </a>
-                              </button>
+                                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
                         </div>
-
-                        <div className="col-lg-3 ml-auto mt-sm-2 mt-2 mt-md-0 offcolor p-0 rounded ">
-                        <h4 className="headercolor text-center rounded p-1">Testimonials</h4>
-
-                            <div className="row m-2 p-3 contentcolor rounded text-center">
-                            <h6 className="text-center w-100">Samuel is a Murder Expert</h6>
-
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            <h6 className="text-right w-100">- Jimmy H Killins</h6>
-                            <h6 className="text-right w-100">Not Serial Killer</h6>
-
-                            </div>
-                            
-                        </div>
-                        <div className="col-lg-4 ml-auto mt-sm-2 mt-2 mt-md-0 offcolor rounded p-0">
-                        <h4 className="headercolor text-center rounded p-1">Social</h4>
-
+                        <div className="col-lg-3 ">
+                            <TwitterTimelineEmbed
+                                sourceType="profile"
+                                screenName="Biospark286"
+                                options={{height: 600}}
+                            />
                         </div>
                     </div>
+                </div>
+                    
                 <Footer/>
 
-                </div>
             </div>
 
 		);

@@ -21,32 +21,32 @@ class about extends Component {
     render() {
 		return (
 			<div>
-                <Navbar/>
                
-                <div className="container p-2 rounded">
-                    <div className="row m-0 offcolor p-2 rounded">
+                <div className="container p-0 mt-2 shadow">
+                <Navbar/>
+
+                    <div className="row m-0 offcolor p-2 shadow rounded">
                         <div className="col-md-8 p-3 contentcolor rounded">
-                            <h3>About Me</h3>
-                            <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            <h3 className="text-center">About Me</h3>
+                            <hr />
+                            <p className="indent">
+                            From a young age I have had a strong interest in the Computer Science field. Computers have always fascinated me, as such I am always excited to learn more about them, and what sort of projects I can create with them. I have always been a self-motivated person opting to learn about how something works, rather than have someone else fix the issue for me. This mentality led to me learning how to develop websites, build computers, create programs, and learn other concepts. The main reason why I love most anything to deal with coding is due to the sheer amount there is to learn about different concepts, and finding ways to integrate those concepts into projects.
+                            </p>
+                            <p className="indent">
+                            I have worked with several different languages over the years, as if late I have been working mostly with web technologies, and tools for game development such as Unity. As of late I have been practicing with MongoDB, React, Node.JS, Express.JS and Bootstrap in order to create fully fleshed out websites. During my course work at Western Governors University I created programs using Java, and MySQL for the database portion of these programs.
+
                             </p>
                             
 
                         </div>
                         <div className="col-md-4 pr-md-0 p-0 pl-md-2 rounded">
                             <div className="contentcolor ml-md-1 mt-sm-2 mt-2 mt-md-0 p-2 rounded">
-                            <h3>Skills</h3>
+                            <h3 className="text-center">Skills</h3>
+                            <hr />
                                 <div className="row p-0">
-                                   
-
-                                    
                                     {
                                         this.state.skills.map((skill) => (
-                                    
-
-                                        <div className="col-6 tex">{skill}</div>
-
+                                            <div className="col-6"><span className="badge badge-primary w-100">{skill}</span></div>
                                             
                                             )
                                         )
@@ -57,18 +57,24 @@ class about extends Component {
 
                             </div>    
                             <div className="contentcolor ml-md-1 mt-2 p-2 rounded">
-                                <h3>Education</h3>
+                                <h3 className="text-center">Education</h3>
+                                <hr />
+                                
                                 <h6>Western Governors University</h6>
                                 <p>
                                 Bachelor's Degree in Software Development
                                 </p>
                             </div>
                             <div className="contentcolor ml-md-1 mt-2 p-2 rounded">
-                                <h3>Certifications</h3>
+                                <h3 className="text-center">Certifications</h3>
+                                <hr />
+
                                 <h6>CompTIA Project+</h6>
                                 <p>Project Management Certification</p>
+                                <hr />
                                 <h6>CIW Web Specialist</h6>
                                 <p>Advanced HTML5 and CSS3 Specialist Certification</p>
+                                <hr />
                                 <h6>CompTIA A+</h6>
                                 <p>Technical Support and IT Operational Roles</p>
                             </div>
