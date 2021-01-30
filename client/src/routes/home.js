@@ -50,9 +50,9 @@ class home extends Component {
                                             if(index === 0){//for the first item
                                                 return <div class="carousel-item active">
                                                             <img class="d-block w-100 rounded" src={project.pic} alt=""/>
-                                                            <div class="carousel-caption d-none d-md-block text-center">
+                                                            <div class="carousel-caption d-none d-md-block rounded text-center carocolor">
                                                                 <h5>{project.title}</h5>
-                                                                <p>Project Summary Here?</p>
+                                                                <p>{project.summary}</p>
                                                                 <button type="button" className="btn btn-primary mr-1">
                                                                     <a href={project.web} target="_blank"  rel="noreferrer">View Project On Web</a>
                                                                 </button>
@@ -64,9 +64,9 @@ class home extends Component {
                                             }else{
                                                 return <div class="carousel-item">
                                                             <img class="d-block w-100 rounded" src={project.pic} alt=""/>
-                                                            <div class="carousel-caption d-none d-md-block">
+                                                            <div class="carousel-caption d-none d-md-block carocolor rounded">
                                                                 <h5>{project.title}</h5>
-                                                                <p>Project Summary Here?</p>
+                                                                <p className="">{project.summary}</p>
                                                                 <button type="button" className="btn btn-primary mr-1">
                                                                     <a href={project.web} target="_blank"  rel="noreferrer">View Project On Web</a>
                                                                 </button>
@@ -81,19 +81,23 @@ class home extends Component {
                                     
                                 </div>
                                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
+                                    <span className="carospan">
+                                        <span class="carousel-control-prev-icon caro-m" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </span>
                                 </a>
                                 <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
+                                    <span className="carospan">
+                                        <span class="carousel-control-next-icon caro-m" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </span>
                                 </a>
                             </div>
                         </div>
                         <div className="col-lg-3 ">
                             <TwitterTimelineEmbed
                                 sourceType="profile"
-                                screenName="Biospark286"
+                                screenName="53Crumpler"
                                 options={{height: 600}}
                             />
                         </div>

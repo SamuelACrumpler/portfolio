@@ -38,8 +38,24 @@ h1,h2,h3,h4,h5,h6, .htextcol {
 }
 
 .transcolor, .headercolor{
-    /* background-color: rgba(192,192,192,0.5); */
     background-color: rgba(192, 192, 192, 0.5)!important; 
+}
+
+.carocolor{
+    background-color: rgba(105, 105, 105, 0.9)!important; 
+}
+
+.carospan{
+    background: grey;
+    border-radius: 30px;
+    padding: 6px 10px;
+    border: solid;
+    border-width: 5px;
+    border-color: black;
+}
+
+.caro-m {
+    margin-top: 5px
 }
 
 .offcolor{
@@ -84,6 +100,10 @@ h1,h2,h3,h4,h5,h6, .htextcol {
     text-decoration: none;
 }
 
+.fa-twitter{
+    background-color: #1DA1F2;
+    color: white;
+}
 .fa-envelope {
     background: #dd4b39;
     color: white;
