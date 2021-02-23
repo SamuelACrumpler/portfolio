@@ -10,7 +10,6 @@ class projects extends Component {
 		this.state = {
             list : data
 		}
-        console.log(data)
 	
     }
 
@@ -28,7 +27,7 @@ class projects extends Component {
                             this.state.list.map((project, index) => {
                                 if(parseInt(index)%2 === 0){// if even
                                     return <div className="row m-0">
-                                        <div className="col-md-12 col-lg-6 p-3 contentcolor text-center">
+                                        <div className="col-md-12 col-lg-6 p-3 contentcolor text-center border border-primary">
                                             <h3>{project.title}</h3>
                                             <hr/>
                                             {project.tags.map((tag,index)=>{
@@ -45,7 +44,7 @@ class projects extends Component {
                                                 </button>
                                             </div>      
                                         </div>
-                                        <div className="col-md-12 col-lg-6 contentcolor p-0 fill">
+                                        <div className="col-md-12 col-lg-6 contentcolor p-0 fill border border-primary">
                                             
                                             <img className="img-fluid" src={project.pic} alt="Logo"/>
 
@@ -54,11 +53,11 @@ class projects extends Component {
                                 }else {// if odd
                                     return <div className="row m-0">
 
-                                        <div className="col-md-12 col-lg-6 order-12 order-lg-1 contentcolor p-0 fill">
+                                        <div className="col-md-12 col-lg-6 order-12 order-lg-1 contentcolor p-0 fill border border-primary">
                                             <img className="img-fluid" src={project.pic} alt="Logo"/>
 
                                         </div>
-                                        <div className="col-md-12 col-lg-6 order-1 order-lg-12 p-3 contentcolor text-center">
+                                        <div className="col-md-12 col-lg-6 order-1 order-lg-12 p-3 contentcolor text-center border border-primary">
                                             <h3>{project.title}</h3>
                                             <hr/>
                                             {project.tags.map((tag,index)=>{

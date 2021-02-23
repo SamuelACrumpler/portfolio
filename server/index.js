@@ -53,12 +53,12 @@ app.post('/send', (req, res) => {
   var name = req.body.name
   var email = req.body.email
   var message = req.body.message
-  var content = `name: ${name} \n email: ${email} \n message: ${message} `
+  var content = `Name: ${name} \n E-mail: ${email} \n Message: ${message} `
 
   var mail = {
     from: name,
     to: 'Samuel.A.Crumpler@gmail.com',  //Change to email address that you want to receive messages on
-    subject: 'New Message from Contact Form',
+    subject: '[Contact Form]',
     text: content
   }
 
@@ -104,41 +104,27 @@ app.post('/api/cap', (req, res, next) => {
 app.post('/api/recap', (req, res, next) => {
   const recaptchaData = {
     remoteip: req.connection.remoteAddress,
-    response: _.get(req.body, 'recaptchaResponse'), //doesn't recognize the underscore
+    response: _.get(req.body, 'recaptchaResponse'),
     secret: process.env.RECAPTCHA_SECRET_KEY,
   };
 
   return recaptchaHelpers.verifyRecaptcha(recaptchaData)
     .then(() => {
       // Process the request
-      console.log("reuqest finished?")
+      console.log("reuqest finished")
     });
 });
 
 app.post('/api/rcap',function(req,res){
-  console.log("add: " + req.connection.remoteAddress)
-  console.log(res.data)
-  console.log(req.body)
+ 
 
-  //request is depreceated
-
-  // g-recaptcha-response is the key that browser will generate upon form submit.
-  // if its blank or null means user has not selected the captcha, so return the error.
+ 
   if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
     return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
   }
-  // Put your secret key here.
-  // req.connection.remoteAddress will provide IP address of connected user.
+  
   var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + process.env.RECAPTCHA_SECRET_KEY + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
-  // Hitting GET request to the URL, Google will respond with success or error scenario.
-  // axios(verificationUrl,function(err,res,body) {
-  //   body = JSON.parse(body);
-  //   // Success will be true or false depending upon captcha validation.
-  //   if(body.success !== undefined && !body.success) {
-  //     return res.json({"responseCode" : 1,"responseDesc" : "Failed captcha verification"});
-  //   }
-  //   res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
-  // });
+  
 
   axios.post(
     verificationUrl,
@@ -149,37 +135,11 @@ app.post('/api/rcap',function(req,res){
       },
     },
   ).then(res =>{
-    console.log(verificationUrl)
-    console.log("i think we did it")
   });
 });
 
 
-// app.post('/jow', (req, res, next) => {
 
-//   console.log(req.body['g-recaptcha-response']);
-
-//   var options = {
-//     method: 'POST',
-//     uri: 'https://www.google.com/recaptcha/api/siteverify',
-//     form: {
-//       secret: process.env.skey,
-//       response: req.body['g-recaptcha-response'],
-//     },
-//     json: true // Automatically stringifies the body to JSON
-//   };
-
-//   request(options)
-//     .then((response) => {
-//       console.log(response);
-//     })
-//     .catch((err) => {
-//       console.log('error');
-//     })
-
-// });
-
-console.log("rere"+process.env.RECAPTCHA_SECRET_KEY)
   
   app.use(express.static(path.join(__dirname, '../client/build')));
 

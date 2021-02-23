@@ -19,17 +19,22 @@ class contact extends Component {
           status: "Submit",
           error: "",
           response: "",
+          seconds: 0,
           path: result
         };   
 
     this.onChange = this.onChange.bind(this);
     this.handleCaptchaResponseChange = this.handleCaptchaResponseChange.bind(this);
+    this.countDown = this.countDown.bind(this);
 
 
     } 
 
+    componentDidMount(){console.log("Seconds: " + this.state.seconds)}
+
     callback(){
       console.log("done");
+      
     }
 
     verifyCallback(response){
@@ -55,9 +60,31 @@ class contact extends Component {
       });
     }
 
+    validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+    
+    countDown() {
+      console.log("Seconds: " + this.state.seconds)
+      let s = this.state.seconds - 1;
+      this.setState({seconds : s})
+      
+      if (this.state.seconds === 0) { 
+        clearInterval(this.timer);
+        document.getElementById("error").classList.add('d-none');
+        document.getElementById("success").classList.add('d-none');
+
+
+
+      }
+    }
+
+
     handleSubmit(event) {
         event.preventDefault();
         console.log("Submitted)")
+        console.log("message"+document.getElementById('message').value)
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
@@ -65,24 +92,55 @@ class contact extends Component {
         if(name === ""){
             this.setState({error: "Name was left blank."})
 						document.getElementById("error").classList.remove('d-none');
-
+            return;
         }else if(email === ""){
           this.setState({error: "E-Mail was left blank"})
-						document.getElementById("error").classList.remove('d-none');
+            document.getElementById("error").classList.remove('d-none');
+            return;
+            
+          
+       }else if(this.validateEmail(email) === false){
+        this.setState({error: "E-Mail is not valid"})
+        document.getElementById("error").classList.remove('d-none');
+        return;
 
        }else if(message === ""){
         this.setState({error: "Message was left blank"})
-						document.getElementById("error").classList.remove('d-none');
+            document.getElementById("error").classList.remove('d-none');
+            return;
+            
       }else if(response === "" || response === null){
         this.setState({error: "The reCAPTCHA was invalid. Go back and try it again."})
-						document.getElementById("error").classList.remove('d-none');
+            document.getElementById("error").classList.remove('d-none');
+            return;
+            
       }
 
+      console.log("Got past this all stuff");
+
       axios.post(this.state.path + '/api/rcap',{'g-recaptcha-response' : response})
-			.then(res => {
-				console.log(res.data)
+			  .then(res => {
+         
 			})
-        
+      
+      axios({
+        method: "POST", 
+        url: this.state.path + "/send", 
+        data: {
+            name: name,   
+            email: email,  
+            message: message
+        }
+      }).then((response)=>{
+        if (response.data.msg === 'success'){
+            this.setState({error: "Message was sent successfully"})
+            document.getElementById("success").classList.remove('d-none');
+            this.resetForm()
+        }else if(response.data.msg === 'fail'){
+            this.setState({error: "Message failed to send."})
+            document.getElementById("error").classList.remove('d-none');
+        }
+    })
       
    
     }
@@ -90,6 +148,14 @@ class contact extends Component {
     
     resetForm(){
       document.getElementById('contact-form').reset();
+      this.recaptcha.reset();
+      this.setState({response: ""})
+      this.setState({seconds: 15}, () =>
+      {
+        console.log("SecondsSet: " + this.state.seconds)
+        this.timer = setInterval(this.countDown, 1000)
+
+      })
     }
 
     render() {

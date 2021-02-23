@@ -13,7 +13,6 @@ class home extends Component {
             lstProject : data
 		}
         
-        console.log(data)
 	
     }
     

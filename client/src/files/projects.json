@@ -52,7 +52,17 @@
     "web":"https://docs.google.com/spreadsheets/d/1_xfobO4gEK47_dVPsKFLoeMHIqVxe83uCPkq9H3jAhQ/edit#gid=0",
     "git":"https://github.com/SamuelACrumpler/time-tracker",
     "disabled":""
+},{
+    "title":"Timer",
+    "tags":["React Native","React Native Elements", "Expo", "JavaScript", "Responsive Design"],
+    "desc":"An app that creates timers made in React Native to run on the web, and is served via the Android App. Can handle multiple timers that are saved on the device or browser using the Async Storage package. Uses React Navigation to transfer in between the different screens.",
+    "summary":"A web app that allows the user to make various types of timers.",
+    "pic":"./timer.png",
+    "web":"https://timer.samuelcrumpler.com",
+    "git":"https://github.com/SamuelACrumpler/Clock",
+    "disabled":""
 }
+
 
 
 ]
